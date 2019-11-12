@@ -3,7 +3,7 @@ import os, tweepy
 def oauth_login(config_file):
     # uses your dev.twitter.com credentials.
     # apply as a twitter developer
-    # create a twitter application in 
+    # create a twitter application in
     # https://developer.twitter.com/en/apps.
     # place the following credentials values
     # in this order - in config.cfg file:
@@ -17,7 +17,7 @@ def oauth_login(config_file):
     auth.set_access_token(cfg[2],cfg[3])
     return tweepy.API(auth)
 
-def batch_delete(api):
+def batch_delete(api,dn):
     # deletes all tweets except for tweet id's saved in tosave.txt
     # to tweet ids are often found on the address bar.
     # example:
@@ -28,7 +28,7 @@ def batch_delete(api):
     # note: place one id per line.
 
     for status in list(tweepy.Cursor(api.user_timeline).items()):
-        if status.id not in [int(x.strip()) for x in open("tosave.txt","r").readlines()]:
+        if status.id not in [int(x.strip()) for x in open(dn+"/tosave.txt","r").readlines()]:
             api.destroy_status(status.id)
 
 if __name__ == "__main__":
@@ -36,5 +36,5 @@ if __name__ == "__main__":
     dn = open(dir_name+"/config.cfg","r")
     api = oauth_login(dn.readlines())
     print(("Authenticated as: %s" % api.me().screen_name))
-    batch_delete(api)
+    batch_delete(api, dir_name)
 
