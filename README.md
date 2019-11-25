@@ -10,7 +10,7 @@ script to delete (and save some) tweets using CLI. tested on windows and linux (
 ### 1. apply to be a twitter developer (dev.twitter.com),
 ### 2. create a twitter application via https://developer.twitter.com/en/apps
 ### 3. placing your api credentials
-once your account and app is approved: place the following app credentials in config.cfg:
+once your account and app is approved: place the following app credentials in config.cfg (if this file doesn't exist, please create it):
 3.1. ``` consumer_key ```
 3.2. ``` consumer_secret ```
 3.3. ``` access_key ```
