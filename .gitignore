@@ -1,3 +1,4 @@
 config.cfg
 *.pyc
 tosave.txt
+*.txt
